@@ -4,7 +4,8 @@ import win32file
 import win32event
 import win32con
 
-path_to_watch = os.path.abspath("\\\\ent.core.company.com/mit-city01/City Public/Folder/Folder")
+path_to_watch = os.path.abspath(
+    "\\\\ent.core.company.com/mit-city01/City Public/Folder/Folder")
 # FindFirstChangeNotification sets up a handle for watching
 #  file changes. The first parameter is the path to be
 #  watched; the second is a boolean indicating whether the
@@ -25,9 +26,11 @@ try:
         # If the WaitFor... returned because of a notification (as opposed to timing out or some error) then look for the changes in the directory contents.
         if result == win32con.WAIT_OBJECT_0:
             # print('somechange')
-            new_path_contents = dict([(f, None) for f in os.listdir(path_to_watch)])
+            new_path_contents = dict([(f, None)
+                                      for f in os.listdir(path_to_watch)])
             added = [f for f in new_path_contents if not f in old_path_contents]
-            deleted = [f for f in old_path_contents if not f in new_path_contents]
+            deleted = [
+                f for f in old_path_contents if not f in new_path_contents]
             if added:
                 print("Added: ", ", ".join(added))
                 # Defines the name of the file for download / upload

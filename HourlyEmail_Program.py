@@ -21,11 +21,13 @@ from PIL import ImageGrab
 def mycountchecker(AttachmentFlag, excelpath, pname, start_time, fname, path, mycount, Range1, Range2, Range3, Range4, SheetToSend, EmailTo1, EmailTo2):
     mycount = mycount + 1
     if mycount > 20:
-        onErrorReplaceWorkBook(fname=fname, path=path, pname=pname, excelpath=excelpath)
+        onErrorReplaceWorkBook(fname=fname, path=path,
+                               pname=pname, excelpath=excelpath)
         logger.debug("Failed More Than Twice Ending Program - " + pname)
         EndProgram()
     else:
-        onErrorReplaceWorkBook(fname=fname, path=path, pname=pname, excelpath=excelpath)
+        onErrorReplaceWorkBook(fname=fname, path=path,
+                               pname=pname, excelpath=excelpath)
         logger.debug("Failed Replacing and Re-attempting - " + pname)
         attemptToOpenSpreadSheet(
             AttachmentFlag=AttachmentFlag, pname=pname, start_time=start_time, fname=fname, path=path,
@@ -153,7 +155,8 @@ def SetFileLooping(filename_listC1, compiler_df, dayofweekinput, hourofdayinput,
         Range4 = df.loc[df['filename'] == pname, 'Range4'].item()
         EmailTo1 = df.loc[df['filename'] == pname, 'EmailTo1'].item()
         EmailTo2 = df.loc[df['filename'] == pname, 'EmailTo2'].item()
-        AttachmentFlag = df.loc[df['filename'] == pname, 'AttachmentFlag'].item()
+        AttachmentFlag = df.loc[df['filename']
+                                == pname, 'AttachmentFlag'].item()
         if any(pname in s for s in filename_listC1):
             mycount = 0
             start_time = datetime.now()
@@ -309,7 +312,8 @@ def CreateEmail(pname, EmailTo1, EmailTo2, attachment1, AttachmentFlag):
             imageCid)
         nmail.To = EmailTo2
         d = datetime.today().strftime('%m-%d ') + datetime.today().strftime('@%I%p')
-        mysubject = pname.replace('.xlsx', "").replace('.xlsb', "").replace('_', ' ') + ' Report'
+        mysubject = pname.replace('.xlsx', "").replace(
+            '.xlsb', "").replace('_', ' ') + ' Report'
         if 'Hourly' in pname:
             mysubject = pname.replace('.xlsx', "").replace(
                 '.xlsb', "").replace('_', ' ') + ' Report - ' + d
@@ -366,7 +370,8 @@ if __name__ == __name__:
     dayofweekinput = datetime.today().weekday()
     hourofdayinput = datetime.now().hour
     txtpathSearch, excelpathSearch, excelpath = locationoffiles(useranme)
-    filename_listC1, compiler_df = parameters_when_runfileDoWHour(txtpathSearch)
+    filename_listC1, compiler_df = parameters_when_runfileDoWHour(
+        txtpathSearch)
     SetFileLooping(filename_listC1, compiler_df, dayofweekinput,
                    hourofdayinput, excelpathSearch, excelpath)
     EndProgram(__name__)

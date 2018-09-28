@@ -12,7 +12,7 @@ conn = pypyodbc.connect(
 # OPEN CURSOR AND EXECUTE SQL
 cur = conn.cursor()
 a = ' * '
-b = '"AQry_Reported_Final FY19"'
+b = '"AQry"'
 c = "SELECT" + a + "FROM " + b
 
 print(c)
@@ -20,15 +20,10 @@ cur.execute(c)
 res = cur.execute(c)
 columnList = [tuple[0] for tuple in res.description]
 print(columnList)
-
-
 # OPEN CSV AND ITERATE THROUGH RESULTS
 with open("\\\\ent.core.company.com\mit-city01\City Public\Folder\FileName.csv", 'w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(['Eval Date/Time', 'Date', 'Agent', 'User ID',
-                     'Contact ID', 'Evaluator Name', 'Question', 'Remark', 'Comments',
-                     'Pts Possible', 'Pts Earned', 'Form', 'Notes', 'Form Components Comments',
-                     'Forward to Agent', 'Diabetes - Score Change', 'Diabetes-HIPAA Violation', 'EmployeeID', 'AgentStatus'])
+    writer.writerow(['Eval Date/Time', 'Date', 'Agent', 'User ID'])
     for counter, row in enumerate(cur.fetchall()):
         print(counter)
         writer.writerow(row)

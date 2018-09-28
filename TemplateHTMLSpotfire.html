@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html> 
+	<head>
+			<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+			<meta content="utf-8" http-equiv="encoding">
+			<meta http-equiv="X-UA-Compatible" content="IE=10"/>
+			<title id="onetidTitle">Agent Metrics</title>
+			<script type="text/javascript" src="https://spotfireweb/spotfire/wp/GetJavaScriptApi.ashx?Version=7.5"></script>
+		<Style>		
+			div {border: 1px none;padding: 00px;resize: both; overflow-y:hidden;}
+			#SideDrawerMenu { padding:0px; margin:0 auto; width: 100%;height:2000px }			
+			#Demo_Table_SideDrawerMenu2  { padding:0px; margin:0 auto; width: 100%;height:450px } 			
+			#Legacy_Rep_View_No_Filter { padding:0px; margin:0 auto; width: 100%;height:450px }			
+			#NPSStats { padding:0px; margin:0 auto; width: 100%;height:350px }
+			#NPSTicketLookUp { padding:0px; margin:0 auto; width: 100%;height:400px }			
+			#RepExport { padding:0px; margin:0 auto; width: 100%;height:790px }
+			
+			#Availability { padding:0px; margin:0 auto; width: 100%;height:350px }
+			table {font-family: effra, sans-serif; border-collapse: collapse;width: 100%;}	
+			.sidenav { height: 900px; width: 0;
+				position: fixed; z-index: 1;
+				top: 0;  left: 0; background-color: black;
+				overflow-x: hidden; transition: 0.5s;
+				padding-top: 60px;
+				overflow-y: visbile; }
+			.sidenav a {padding: 8px 8px 8px 32px; 
+						text-decoration: none; font-size: 25px; 
+						color: #818181; display: block;transition: 0.3s;}
+			.sidenav a:hover {color: #f1f1f1;}
+			.sidenav .closebtn {position: absolute;top: 0;right: 25px;font-size: 36px; margin-left: 50px;}	
+			.navbar {overflow: hidden; background-color: #C9C9C9;
+					position: fixed; top: 0; width: 100%;}
+			.navbar a {float: left; display: block;
+						color: #f2f2f2; text-align: center;
+						padding: 14px 16px; text-decoration: none; font-size: 17px;}
+			.navbar a:hover {background: #ddd;color: black;}			
+		</style>  	
+			<script> 
+				var c_serverUrl = "https://spotfireweb/spotfire/wp/";									
+				var c_analysisPath = "/Diabetes/SA Business Analytics/AllRepStatsv6";
+				var c_parameters = "";  //Optional configuration block		
+				var customization = new spotfire.webPlayer.Customization();  //Optional configuration settings
+				var app;
+				var c_reloadAnalysisInstance = true;				
+				window.onload = function()
+				{customization.showDodPanel = false;customization.showStatusBar = false;customization.showToolBar = false
+				customization.showPageNavigation = false;customization.showClose = false;customization.showAnalysisInfo = false;customization.showExportFile = false; 
+				customization.showExportVisualization = false;customization.showUndoRedo = false;customization.showFilterPanel = false;
+				app = new spotfire.webPlayer.Application(c_serverUrl, customization, c_analysisPath, c_parameters, c_reloadAnalysisInstance);				
+				//Variables for each Page
+				var viewOne2 = app.openDocument("Demo_Table_SideDrawerMenu2", "Demo_Table_SideDrawerMenu2", customization);
+				var viewOne = app.openDocument("SideDrawerMenu", "SideDrawerMenu", customization);
+				var viewOne1 = app.openDocument("Legacy_Rep_View_No_Filter", "Legacy_Rep_View_No_Filter", customization);	
+				var viewOne3 = app.openDocument("NPSTicketLookUp", "NPSTicketLookUp", customization);
+				var viewOne4 = app.openDocument("RepExport", "RepExport", customization);	
+				var viewOne5 = app.openDocument("NPSStats", "NPSStats", customization);	
+                var viewOne6 = app.openDocument("DontDelete", "DontDelete", customization);	
+				var viewOne7 = app.openDocument("Availability", "Availability", customization);	
+				
+
+
+				
+				} 
+			</script>
+	</head>
+	
+	<body style="background-color:#C9C9C9;">	
+
+	<div id="mySidenav" class="sidenav">
+	  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div id="SideDrawerMenu"> </div> 
+	</div>
+		<div class="navbar">
+			<span style="font-size:25px;cursor:pointer" onclick="openNav()">&#9776; Filters</span>
+		</div>				
+			<script>
+				function openNav() {
+					document.getElementById("mySidenav").style.width = "450px";
+					document.getElementById("main").style.marginLeft = "450px";
+					document.getElementById("mySidenav").style.overflowY = "scroll";					
+				}
+
+				function closeNav() {
+					document.getElementById("mySidenav").style.width = "0";
+					document.getElementById("main").style.marginLeft= "0";
+					document.getElementById("mySidenav").style.overflowY = "hidden";
+				}	
+
+			
+			</script>
+		<div id="main"> 	
+<br> <h1 align="center"><font color="Black">Agent Metrics Temp Dashboard </font></h1> 
+
+<p><font color="White">If page Loads Blank Please follow Link to Sign In</font></p>
+	<form>
+		<input type="button" 
+		value="Go to Sign In Page" 
+		onclick="window.location.href='https://spotfireweb/spotfire/wp/render/IsMC5Jz_oPpqhOU39F/analysis?file=/Diabetes/DiabetesDashboards&waid=JwKJo878ckqNZqCoZpFGq-20051088deDG5l&wavid=0'" 
+		/></form>		
+<br> 	
+		<h2><font color="Black">All Stats</font></h2> 
+		<div id="Demo_Table_SideDrawerMenu2" ></div> 	
+		<div id="Availability" ></div> 	
+		<h2><font color="Black">Comparison View - Single or All Stats</font></h2> 	
+		<div id="Legacy_Rep_View_No_Filter"></div> 
+			<h2><font color="Black">NPS Info - Look For Button on Filter Panel</font></h2> 
+			<p><font color="Black">Click Button to Update data for Only Filtered Data</font></p>			
+		<div id="NPSStats"></div> 
+		<div id="NPSTicketLookUp"></div> 		
+	<!--	<h2><font color="Black">Export Tables</font></h2> 
+		<div id="RepExport"></div> -->
+		
+<br> 		
+       </div> 
+	</body>
+</html>
